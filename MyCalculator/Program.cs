@@ -17,58 +17,49 @@ namespace SolidPrinciplesExample
             Console.WriteLine("Select operation (+, -, *, /):");
             char operation = Convert.ToChar(Console.ReadLine());
 
-            double result = 0;
+            IOperation op = null;
 
             switch (operation)
             {
                 case '+':
-                    result = calculator.Add(num1, num2);
+                    op = new Addition();
                     break;
                 case '-':
-                    result = calculator.Subtract(num1, num2);
+                    op = new Subtraction();
                     break;
                 case '*':
-                    result = calculator.Multiply(num1, num2);
+                    op = new Multiplication();
                     break;
                 case '/':
-                    result = calculator.Divide(num1, num2);
+                    op = new Division();
                     break;
                 default:
                     Console.WriteLine("Invalid operation selected.");
                     break;
             }
 
-            Console.WriteLine("Result: " + result);
+            if (op != null)
+            {
+                double result = calculator.Calculate(num1, num2, op);
+                Console.WriteLine("Result: " + result);
+            }
 
             Console.ReadLine();
         }
     }
 
+    interface IOperation
+    {
+        double Execute(int num1, int num2);
+    }
+
+    
+
     class Calculator
     {
-        public double Add(int num1, int num2)
+        public double Calculate(int num1, int num2, IOperation operation)
         {
-            return num1 + num2;
-        }
-
-        public double Subtract(int num1, int num2)
-        {
-            return num1 - num2;
-        }
-
-        public double Multiply(int num1, int num2)
-        {
-            return num1 * num2;
-        }
-
-        public double Divide(int num1, int num2)
-        {
-            if (num2 == 0)
-            {
-                Console.WriteLine("Error: division by zero.");
-                return 0;
-            }
-            return (double)num1 / num2;
+            return operation.Execute(num1, num2);
         }
     }
 }
