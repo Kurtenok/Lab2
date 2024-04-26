@@ -28,10 +28,10 @@ namespace SolidPrinciplesExample
                     op = new Subtraction();
                     break;
                 case '*':
-                    op = new Multiplication();
+                  //  op = new Multiplication();
                     break;
                 case '/':
-                    op = new Division();
+                 //   op = new Division();
                     break;
                 default:
                     Console.WriteLine("Invalid operation selected.");
@@ -52,8 +52,24 @@ namespace SolidPrinciplesExample
     {
         double Execute(int num1, int num2);
     }
+    public class Addition : IOperation
+    {
+        public double Execute(int num1, int num2)
+        {
+            return num1 + num2;
+        }
+    }
+
+    public class Subtraction : IOperation
+    {
+        public double Execute(int num1, int num2)
+        {
+            return num1 - num2;
+        }
+    }
 
     
+
 
     class Calculator
     {
