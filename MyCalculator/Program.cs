@@ -60,6 +60,7 @@ namespace SolidPrinciplesExample
         }
     }
 
+
     public class Subtraction : IOperation
     {
         public double Execute(int num1, int num2)
@@ -68,7 +69,26 @@ namespace SolidPrinciplesExample
         }
     }
 
-    
+    public class Multiplication : IOperation
+    {
+        public double Execute(int num1, int num2)
+        {
+            return num1 * num2;
+        }
+    }
+
+    public class Division : IOperation
+    {
+        public double Execute(int num1, int num2)
+        {
+            if (num2 == 0)
+            {
+                Console.WriteLine("Error: division by zero.");
+                return 0;
+            }
+            return (double)num1 / num2;
+        }
+    }
 
 
     class Calculator

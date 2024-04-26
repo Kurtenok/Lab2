@@ -34,5 +34,29 @@ namespace SolidPrinciplesExample.Tests
             double result = subtraction.Execute(x, y);
             Assert.AreEqual(result, expected);
         }
+
+        [TestMethod()]
+        public void ExecuteMultiplicationTest()
+        {
+
+            Multiplication multiplication = new Multiplication();
+            int x = 3;
+            int y = 2;
+            double expected = 6;
+            double result = multiplication.Execute(x, y);
+            Assert.AreEqual(result, expected);
+        }
+
+        [TestMethod()]
+        public void ExecuteDivisionTest()
+        {
+
+            Division division = new Division();
+            int x = 3;
+            int y = 2;
+            double expected = 1.5f;
+            double result = division.Execute(x, y);
+            Assert.AreEqual(result, expected);
+        }
     }
 }
